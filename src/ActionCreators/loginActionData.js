@@ -15,7 +15,7 @@ export const register = (formData, navigate) => async (dispatch) => {
   try {
     const { name, email, contactNumber, password } = formData;
     const res = await axios.post(
-      "https://where-is-my-book-services.onrender.com//api/users/register",
+      "https://where-is-my-book-services.onrender.com/api/users/register",
       {
         name,
         email,
@@ -43,7 +43,7 @@ export const login = (formData, navigate) => (dispatch) => {
   const { email, password } = formData;
   console.log(formData);
   axios
-    .post("https://where-is-my-book-services.onrender.com//api/users/login", {
+    .post("https://where-is-my-book-services.onrender.com/api/users/login", {
       email,
       password,
     })
