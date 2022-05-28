@@ -14,7 +14,7 @@ export const searchItem =
     console.log(searchKey + " ", searchValue);
     try {
       const res = await axios.get(
-        "https://where-is-my-book-services.onrender.com//api/products/product" +
+        "https://where-is-my-book-services.onrender.com/api/products/product" +
           "?" +
           searchKey +
           "=" +
