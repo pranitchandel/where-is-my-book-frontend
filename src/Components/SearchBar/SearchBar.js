@@ -101,7 +101,7 @@ const SearchBar = ({ searchItem, user, logout, getWishlist, wishlist }) => {
             Logout
           </button>
           <button className="logoutButton" id="wishlistBtn">
-            WL : {wishlist.length}
+            WL : {wishlist ? wishlist.length : 0}
           </button>
         </div>
       ) : (
