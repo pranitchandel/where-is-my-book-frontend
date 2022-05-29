@@ -81,7 +81,10 @@ export const setCurrentUser = (decoded) => {
 export const addWishlist = ({ userId, prodId }) => {
   axios
     .post(
-      "http://localhost:5000/api/users/addWishlist/" + userId + "/" + prodId
+      "https://where-is-my-book-services.onrender.com/api/users/addWishlist/" +
+        userId +
+        "/" +
+        prodId
     )
     .then((res) => console.log(res.data))
     .catch((err) => console.log(err));
@@ -90,7 +93,8 @@ export const addWishlist = ({ userId, prodId }) => {
 export const getWishlist = (userId) => async (dispatch) => {
   try {
     const res = await axios.get(
-      "http://localhost:5000/api/users/getWishlist/" + userId
+      "https://where-is-my-book-services.onrender.com/api/users/getWishlist/" +
+        userId
     );
     dispatch({
       type: SET_WISHLIST,
