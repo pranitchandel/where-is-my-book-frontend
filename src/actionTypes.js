@@ -5,6 +5,7 @@ export const USER_LOADED = "USER_LOADED";
 export const REGISTER_FAILURE = "REGISTER_FAILURE";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
+export const SET_WISHLIST = "SET_WISHLIST";
 
 export const SEARCH_ITEM = "SEARCH_ITEM";
 export const SELECT_PRODUCT = "SELECT_PRODUCT";

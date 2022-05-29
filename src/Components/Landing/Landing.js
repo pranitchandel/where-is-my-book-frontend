@@ -5,6 +5,7 @@ import Carousal from "./Carousal";
 const Landing = () => {
   return (
     <div>
+      <SearchBar />
       <div className="landingMainSection">
         <Carousal />
         <Categories />

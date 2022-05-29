@@ -78,6 +78,7 @@ const SearchList = ({
 
   return (
     <div>
+      <SearchBar />
       <div className="searchListHeadingContainer">
         <div className="searchListHeading" id="searchKey">
           {capitalize(searchKey)}

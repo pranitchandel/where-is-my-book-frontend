@@ -6,6 +6,7 @@ import {
   USER_LOADED,
   REGISTER_FAILURE,
   SET_CURRENT_USER,
+  SET_WISHLIST,
 } from "../actionTypes";
 
 import isEmpty from "../Utils/isEmpty";
@@ -52,6 +53,10 @@ const loginReducer = (state = initialState, action) => {
         isAuthenticated: !isEmpty(payload),
         user: payload,
       };
+
+    case SET_WISHLIST: {
+      return { ...state, wishlist: payload };
+    }
     default:
       return state;
   }

@@ -24,7 +24,7 @@ const Login = ({ currentUser, isAuthenticated, errorMessage, login }) => {
   };
 
   return (
-    <div className="formContainer">
+    <div className="formContainer" id="loginId">
       <form onSubmit={handleSubmit} className="loginForm">
         {errorMessage ? (
           <div id="error">{errorMessage}</div>

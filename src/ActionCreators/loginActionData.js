@@ -9,6 +9,7 @@ import {
   USER_LOADED,
   REGISTER_FAILURE,
   SET_CURRENT_USER,
+  SET_WISHLIST,
 } from "../actionTypes";
 
 export const register = (formData, navigate) => async (dispatch) => {
@@ -76,4 +77,26 @@ export const setCurrentUser = (decoded) => {
     type: SET_CURRENT_USER,
     payload: decoded,
   };
+};
+export const addWishlist = ({ userId, prodId }) => {
+  axios
+    .post(
+      "http://localhost:5000/api/users/addWishlist/" + userId + "/" + prodId
+    )
+    .then((res) => console.log(res.data))
+    .catch((err) => console.log(err));
+};
+
+export const getWishlist = (userId) => async (dispatch) => {
+  try {
+    const res = await axios.get(
+      "http://localhost:5000/api/users/getWishlist/" + userId
+    );
+    dispatch({
+      type: SET_WISHLIST,
+      payload: res.data,
+    });
+  } catch (err) {
+    console.log(err);
+  }
 };

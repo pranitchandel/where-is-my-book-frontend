@@ -6,7 +6,7 @@ import Register from "./Components/Register/Register";
 import Landing from "./Components/Landing/Landing";
 import SearchList from "./Components/SearchListPage/SearchList";
 import SelectedProduct from "./Components/SelectedProduct/SelectedProduct";
-import SearchBar from "./Components/SearchBar/SearchBar";
+import Account from "./Components/Account/Account";
 import "./App.css";
 
 const App = () => {
@@ -14,13 +14,13 @@ const App = () => {
     <Provider store={store}>
       <Router>
         <div className="App">
-          <SearchBar />
           <Routes>
             <Route path="/" element={<Landing />}></Route>
             <Route path="/login" element={<Login />}></Route>
             <Route path="/register" element={<Register />}></Route>
             <Route path="/searchList" element={<SearchList />}></Route>
             <Route path="/productPage" element={<SelectedProduct />}></Route>
+            <Route path="/account" element={<Account />}></Route>
           </Routes>
         </div>
       </Router>

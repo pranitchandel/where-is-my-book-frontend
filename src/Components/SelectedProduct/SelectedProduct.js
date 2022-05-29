@@ -1,10 +1,20 @@
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import SearchBar from "../SearchBar/SearchBar";
-import { priceRangeChange } from "../../ActionCreators/productActionData";
-const SelectedProduct = ({ product }) => {
+import { addWishlist } from "../../ActionCreators/loginActionData";
+import { useNavigate } from "react-router-dom";
+const SelectedProduct = ({ product, user, addWishlist }) => {
+  const navigate = useNavigate();
+
+  const handleAddWishlist = (prodId) => {
+    console.log(user.id + " " + prodId);
+    addWishlist({ userId: user.id, prodId });
+    navigate("/account");
+  };
+
   return (
     <div>
+      <SearchBar />
       <div className="selectedContainer">
         <div className="selectedProductImageContainer">
           <img
@@ -78,7 +88,11 @@ const SelectedProduct = ({ product }) => {
             <button id="buyBtn" className="selectedProductButton">
               Buy
             </button>
-            <button id="addBtn" className="selectedProductButton">
+            <button
+              id="addBtn"
+              onClick={() => handleAddWishlist(product._id)}
+              className="selectedProductButton"
+            >
               Add to wishlist
             </button>
           </div>
@@ -143,10 +157,13 @@ const SelectedProduct = ({ product }) => {
 
 SelectedProduct.propTypes = {
   product: PropTypes.object.isRequired,
+  user: PropTypes.object.isRequired,
+  addWishlist: PropTypes.func,
 };
 
 const mapStateToProps = (state) => ({
   product: state.product.selectedProduct,
+  user: state.login.user,
 });
 
-export default connect(mapStateToProps, {})(SelectedProduct);
+export default connect(mapStateToProps, { addWishlist })(SelectedProduct);

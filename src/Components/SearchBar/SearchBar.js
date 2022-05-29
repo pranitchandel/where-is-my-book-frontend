@@ -1,16 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import { InputLabel, MenuItem, FormControl, Select, Box } from "@mui/material";
 import { searchItem } from "../../ActionCreators/productActionData";
-import { logout } from "../../ActionCreators/loginActionData";
+import { logout, getWishlist } from "../../ActionCreators/loginActionData";
 import { connect } from "react-redux";
 
-const SearchBar = ({ searchItem, user, logout }) => {
+const SearchBar = ({ searchItem, user, logout, getWishlist, wishlist }) => {
   const [searchKey, setSearchKey] = useState("");
   const [searchValue, setSearchValue] = useState("");
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (user) {
+      getWishlist(user.id);
+    }
+  }, []);
   const handleSearchValue = (e) => {
     console.log("Enter search key is " + e.target.value);
     setSearchValue(e.target.value);
@@ -95,6 +100,9 @@ const SearchBar = ({ searchItem, user, logout }) => {
           <button className="logoutButton" onClick={handleLogout}>
             Logout
           </button>
+          <button className="logoutButton" id="wishlistBtn">
+            WL : {wishlist.length}
+          </button>
         </div>
       ) : (
         <button className="logoutButton" onClick={handleLogin}>
@@ -109,9 +117,14 @@ SearchBar.propTypes = {
   searchItem: PropTypes.func.isRequired,
   logout: PropTypes.func.isRequired,
   user: PropTypes.object,
+  getWishlist: PropTypes.func.isRequired,
+  wishlist: PropTypes.array,
 };
 const mapStateToProps = (state) => ({
   user: state.login.user,
+  wishlist: state.login.wishlist,
 });
 
-export default connect(mapStateToProps, { searchItem, logout })(SearchBar);
+export default connect(mapStateToProps, { searchItem, logout, getWishlist })(
+  SearchBar
+);
