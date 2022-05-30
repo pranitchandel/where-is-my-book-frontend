@@ -50,6 +50,7 @@ const loginReducer = (state = initialState, action) => {
         user: null,
         addWishlistMsg: "",
         wishlist: [],
+        errorMessage: "",
       };
     case SET_CURRENT_USER:
       return {
