@@ -1,15 +1,33 @@
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
+import { useState, useRef, useEffect } from "react";
 import SearchBar from "../SearchBar/SearchBar";
 import { addWishlist } from "../../ActionCreators/loginActionData";
-import { useNavigate } from "react-router-dom";
-const SelectedProduct = ({ product, user, addWishlist }) => {
-  const navigate = useNavigate();
+const SelectedProduct = ({
+  product,
+  user,
+  addWishlist,
+  wishlist,
+  addWishlistMsg,
+}) => {
+  const [disableWishlist, setDisableWishlist] = useState(false);
+  useEffect(() => {
+    let filteredList = wishlist.filter((wish) => {
+      if (wish.productId === product._id) return wish;
+    });
+    if (filteredList.length >= 1) {
+      setDisableWishlist(true);
+    }
+  }, []);
 
   const handleAddWishlist = (prodId) => {
+    if (user === null) {
+      return alert("Please login first");
+    }
     console.log(user.id + " " + prodId);
     addWishlist({ userId: user.id, prodId });
-    navigate("/account");
+    setDisableWishlist(true);
+    // navigate("/account");
   };
 
   return (
@@ -85,15 +103,22 @@ const SelectedProduct = ({ product, user, addWishlist }) => {
             {product.isReturnable === "true" ? "Returnable" : "Not returnable"}
           </div>
           <div className="selectedProductButtons">
-            <button id="buyBtn" className="selectedProductButton">
+            <button
+              id="buyBtn"
+              className="selectedProductButton"
+              onClick={() => {
+                alert("Coming soon!!");
+              }}
+            >
               Buy
             </button>
             <button
               id="addBtn"
               onClick={() => handleAddWishlist(product._id)}
               className="selectedProductButton"
+              disabled={disableWishlist}
             >
-              Add to wishlist
+              Add to Wishlist
             </button>
           </div>
         </div>
@@ -159,11 +184,15 @@ SelectedProduct.propTypes = {
   product: PropTypes.object.isRequired,
   user: PropTypes.object.isRequired,
   addWishlist: PropTypes.func,
+  wishlist: PropTypes.array,
+  addWishlistMsg: PropTypes.string,
 };
 
 const mapStateToProps = (state) => ({
   product: state.product.selectedProduct,
   user: state.login.user,
+  wishlist: state.login.wishlist,
+  addWishlistMsg: state.login.addWishlistMsg,
 });
 
 export default connect(mapStateToProps, { addWishlist })(SelectedProduct);

@@ -14,6 +14,8 @@ const initialState = {
   isAuthenticated: false,
   loading: true,
   user: null,
+  addWishlistMsg: "",
+  wishlist: [],
 };
 const loginReducer = (state = initialState, action) => {
   const { type, payload } = action;
@@ -46,6 +48,8 @@ const loginReducer = (state = initialState, action) => {
         isAuthenticated: false,
         loading: false,
         user: null,
+        addWishlistMsg: "",
+        wishlist: [],
       };
     case SET_CURRENT_USER:
       return {
@@ -55,7 +59,12 @@ const loginReducer = (state = initialState, action) => {
       };
 
     case SET_WISHLIST: {
-      return { ...state, wishlist: payload };
+      console.log(payload);
+      return {
+        ...state,
+        addWishlistMsg: payload.msg,
+        wishlist: payload.wishlist,
+      };
     }
     default:
       return state;

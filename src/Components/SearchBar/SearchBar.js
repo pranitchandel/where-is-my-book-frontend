@@ -12,6 +12,7 @@ const SearchBar = ({ searchItem, user, logout, getWishlist, wishlist }) => {
   const navigate = useNavigate();
 
   useEffect(() => {
+    console.log(wishlist);
     if (user) {
       getWishlist(user.id);
     }
@@ -27,9 +28,12 @@ const SearchBar = ({ searchItem, user, logout, getWishlist, wishlist }) => {
   const handleLogout = () => {
     logout(navigate);
   };
-
   const handleLogin = () => {
     navigate("/login");
+  };
+
+  const handleWishlist = () => {
+    navigate("/account");
   };
 
   return (
@@ -100,7 +104,11 @@ const SearchBar = ({ searchItem, user, logout, getWishlist, wishlist }) => {
           <button className="logoutButton" onClick={handleLogout}>
             Logout
           </button>
-          <button className="logoutButton" id="wishlistBtn">
+          <button
+            className="logoutButton"
+            id="wishlistBtn"
+            onClick={handleWishlist}
+          >
             WL : {wishlist ? wishlist.length : 0}
           </button>
         </div>

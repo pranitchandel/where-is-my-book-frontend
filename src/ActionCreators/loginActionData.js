@@ -28,7 +28,7 @@ export const register = (formData, navigate) => async (dispatch) => {
       type: REGISTER_SUCCESS,
       payload: res.data,
     });
-    navigate("/");
+    navigate("/login");
   } catch (err) {
     console.log(err.response);
     if (err.response.status === 400) {
@@ -78,17 +78,24 @@ export const setCurrentUser = (decoded) => {
     payload: decoded,
   };
 };
-export const addWishlist = ({ userId, prodId }) => {
-  axios
-    .post(
-      "https://where-is-my-book-services.onrender.com/api/users/addWishlist/" +
-        userId +
-        "/" +
-        prodId
-    )
-    .then((res) => console.log(res.data))
-    .catch((err) => console.log(err));
-};
+export const addWishlist =
+  ({ userId, prodId }) =>
+  async (dispatch) => {
+    try {
+      const res = await axios.post(
+        "https://where-is-my-book-services.onrender.com/api/users/addWishlist/" +
+          userId +
+          "/" +
+          prodId
+      );
+      dispatch({
+        type: SET_WISHLIST,
+        payload: res.data,
+      });
+    } catch (err) {
+      console.log(err);
+    }
+  };
 
 export const getWishlist = (userId) => async (dispatch) => {
   try {
