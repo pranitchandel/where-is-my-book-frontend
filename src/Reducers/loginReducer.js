@@ -7,12 +7,15 @@ import {
   REGISTER_FAILURE,
   SET_CURRENT_USER,
   SET_WISHLIST,
+  SET_LOADING,
+  CLEAR_ERROR,
+  UPDATE_WISHLIST,
 } from "../actionTypes";
 
 import isEmpty from "../Utils/isEmpty";
 const initialState = {
   isAuthenticated: false,
-  loading: true,
+  loading: false,
   user: null,
   addWishlistMsg: "",
   wishlist: [],
@@ -42,6 +45,12 @@ const loginReducer = (state = initialState, action) => {
         loading: false,
       };
     }
+
+    case SET_LOADING:
+      return {
+        ...state,
+        loading: payload,
+      };
     case LOGOUT:
       return {
         ...state,
@@ -57,16 +66,22 @@ const loginReducer = (state = initialState, action) => {
         ...state,
         isAuthenticated: !isEmpty(payload),
         user: payload,
+        errorMessage: "",
       };
 
+    case CLEAR_ERROR:
+      return {
+        ...state,
+        errorMessage: "",
+      };
     case SET_WISHLIST: {
-      console.log(payload);
       return {
         ...state,
         addWishlistMsg: payload.msg,
         wishlist: payload.wishlist,
       };
     }
+
     default:
       return state;
   }

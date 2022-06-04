@@ -8,6 +8,7 @@ import SearchList from "./Components/SearchListPage/SearchList";
 import SelectedProduct from "./Components/SelectedProduct/SelectedProduct";
 import Account from "./Components/Account/Account";
 import "./App.css";
+import PrivateRoute from "./Components/Routing/PrivateRoute";
 
 const App = () => {
   return (
@@ -20,7 +21,10 @@ const App = () => {
             <Route path="/register" element={<Register />}></Route>
             <Route path="/searchList" element={<SearchList />}></Route>
             <Route path="/productPage" element={<SelectedProduct />}></Route>
-            <Route path="/account" element={<Account />}></Route>
+            <Route
+              path="/account"
+              element={<PrivateRoute component={Account} />}
+            ></Route>
           </Routes>
         </div>
       </Router>

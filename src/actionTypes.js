@@ -6,6 +6,9 @@ export const REGISTER_FAILURE = "REGISTER_FAILURE";
 export const LOGIN_FAILURE = "LOGIN_FAILURE";
 export const SET_CURRENT_USER = "SET_CURRENT_USER";
 export const SET_WISHLIST = "SET_WISHLIST";
+export const SET_LOADING = "SET_LOADING";
+export const CLEAR_ERROR = "CLEAR_ERROR";
+export const UPDATE_WISHLIST = "UPDATE_WISHLIST";
 
 export const SEARCH_ITEM = "SEARCH_ITEM";
 export const SELECT_PRODUCT = "SELECT_PRODUCT";
