@@ -57,15 +57,11 @@ const SearchBar = ({ searchItem, user, logout, getWishlist, wishlist }) => {
             <Box
               sx={{
                 width: 150,
-                maxHeight: 40,
                 // border: "2px solid blue",
                 outline: "none",
               }}
             >
-              <FormControl
-                hiddenLabel
-                sx={{ width: "100%", position: "relative" }}
-              >
+              <FormControl hiddenLabel sx={{ width: "90%" }}>
                 <InputLabel
                   sx={{
                     top: searchKey === "" ? -10 : -2,
@@ -97,10 +93,8 @@ const SearchBar = ({ searchItem, user, logout, getWishlist, wishlist }) => {
         </div>
       </form>
       {user ? (
-        <div>
-          <div>
-            <p className="user">{user ? user.name : ""}</p>
-          </div>
+        <div className="logoutContainer">
+          <span className="user">{user ? user.name : ""}</span>
           <button className="logoutButton" onClick={handleLogout}>
             Logout
           </button>
@@ -113,7 +107,7 @@ const SearchBar = ({ searchItem, user, logout, getWishlist, wishlist }) => {
           </button>
         </div>
       ) : (
-        <button className="logoutButton" onClick={handleLogin}>
+        <button className="logoutButton loginButton" onClick={handleLogin}>
           Login
         </button>
       )}
