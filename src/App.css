@@ -171,6 +171,10 @@ button[disabled] {
   padding: 5px;
   text-overflow: ellipsis;
 }
+.smallWindowSearchBar {
+  display: none;
+  margin: auto 10px;
+}
 
 .logoutContainer {
   display: flex;
@@ -180,7 +184,8 @@ button[disabled] {
   /* border: 2px solid green; */
 }
 .landingMainSection {
-  /* border: 2px solid black; */
+  width: 100%;
+  border: 2px solid black;
 }
 
 .landingCarousal {
@@ -534,4 +539,14 @@ button[disabled] {
   font-weight: bold;
   margin-right: 10px;
   border: 2px solid yellow;
+}
+
+@media screen and (max-width: 1000px) {
+  .logoutContainer {
+    display: none;
+  }
+  .smallWindowSearchBar {
+    display: block;
+    margin: auto 10px;
+  }
 }

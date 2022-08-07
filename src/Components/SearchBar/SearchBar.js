@@ -2,6 +2,8 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { PropTypes } from "prop-types";
 import { InputLabel, MenuItem, FormControl, Select, Box } from "@mui/material";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { fas } from "@fortawesome/free-solid-svg-icons";
 import { searchItem } from "../../ActionCreators/productActionData";
 import { logout, getWishlist } from "../../ActionCreators/loginActionData";
 import { connect } from "react-redux";
@@ -34,6 +36,11 @@ const SearchBar = ({ searchItem, user, logout, getWishlist, wishlist }) => {
 
   const handleWishlist = () => {
     navigate("/account");
+  };
+
+  const handleSearchClick = () => {
+    document.getElementById("smallWindowSearchBar").innerHTML = "Clicked";
+    // document.getElementById("shortWindowSearchBar").style.display = "block";
   };
 
   return (
@@ -92,6 +99,12 @@ const SearchBar = ({ searchItem, user, logout, getWishlist, wishlist }) => {
           </div>
         </div>
       </form>
+      <button
+        className="logoutButton smallWindowSearchBar"
+        onClick={handleSearchClick}
+      >
+        Click
+      </button>
       {user ? (
         <div className="logoutContainer">
           <span className="user">{user ? user.name : ""}</span>
