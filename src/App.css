@@ -77,6 +77,7 @@ input[type="submit"],
   width: 100%;
   height: 80px;
   z-index: 1;
+  align-items: center;
   justify-content: space-between;
   border-bottom: 5px solid red;
 }
@@ -143,14 +144,6 @@ button[disabled] {
   width: 100px;
   border-radius: 5px;
   height: 35px;
-  /* margin: 20px 0px;
-  position: absolute;
-  right: 110px; */
-}
-
-.loginButton {
-  margin: auto 10px;
-  /* border: 2px solid green; */
 }
 
 #wishlistBtn {
@@ -158,7 +151,7 @@ button[disabled] {
   border: 2px solid #573b8a;
   color: red;
   background-color: whitesmoke;
-  width: 70px;
+  width: 100px;
 }
 .user {
   display: block;
@@ -171,18 +164,49 @@ button[disabled] {
   padding: 5px;
   text-overflow: ellipsis;
 }
-.smallWindowSearchBar {
-  display: none;
+#smallWindowSearchBar {
+  display: block;
   margin: auto 10px;
+}
+
+.menuBarContainer {
+  /* border: 2px solid blue; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 30%;
 }
 
 .logoutContainer {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 30%;
+  width: 100%;
   /* border: 2px solid green; */
 }
+
+.smallSearchBarMenu {
+  width: 45px;
+  height: 35px;
+  display: none;
+  border: none;
+  color: white;
+}
+.smallSearchBarMenu img {
+  width: 100%;
+  height: 100%;
+}
+#smallLogoutContainer {
+  display: none;
+  position: absolute;
+  top: 80px;
+  right: 0px;
+  width: 70%;
+  height: 80px;
+  background-color: #573b8ab0;
+  z-index: 100;
+}
+
 .landingMainSection {
   width: 100%;
   border: 2px solid black;
@@ -192,6 +216,13 @@ button[disabled] {
   margin-top: 20px;
   height: 50vh;
   border: 2px solid greenyellow;
+}
+
+.carousalImages {
+  margin: auto;
+  width: 100%;
+  height: 500px;
+  display: flex;
 }
 .landingCategories {
   margin-top: 10px;
@@ -206,6 +237,7 @@ button[disabled] {
   border-radius: 5px;
   cursor: pointer;
   min-width: 200px;
+  height: 100%;
   text-align: center;
   /* margin: 2px; */
   position: relative;
@@ -545,8 +577,21 @@ button[disabled] {
   .logoutContainer {
     display: none;
   }
-  .smallWindowSearchBar {
+  #smallWindowSearchBar {
     display: block;
     margin: auto 10px;
+  }
+  .carousalImages {
+    height: 300px;
+  }
+  .landingCategories {
+    height: 160px;
+    min-width: 160px;
+  }
+  .menuBarContainer {
+    display: none;
+  }
+  .smallSearchBarMenu {
+    display: block;
   }
 }

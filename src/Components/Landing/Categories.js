@@ -58,7 +58,11 @@ const Categories = ({ searchItem }) => {
       key={key}
     >
       <div className="categoryName">{category.name}</div>
-      <img src={category.imageUrl} alt="image" />
+      <img
+        src={category.imageUrl}
+        alt="image"
+        style={{ height: "80%", width: "80%" }}
+      />
     </div>
   ));
 

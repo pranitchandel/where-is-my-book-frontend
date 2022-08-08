@@ -16,10 +16,7 @@ const Carousal = () => {
     },
   ];
   return (
-    <Carousel
-      indicators={false}
-      sx={{ width: "100%", height: 500, marginTop: 10 }}
-    >
+    <Carousel indicators={false}>
       {items.map((item, i) => (
         <Item key={i} item={item} />
       ))}
@@ -29,15 +26,11 @@ const Carousal = () => {
 
 function Item(props) {
   return (
-    <Paper sx={{ display: "flex" }}>
+    <Paper className="carousalImages">
       <img
-        style={{
-          margin: "auto",
-          width: "100%",
-          height: 500,
-        }}
         src={props.item.imageUrl}
         alt="image"
+        style={{ height: "auto", width: "100%" }}
       />
     </Paper>
   );
