@@ -9,16 +9,14 @@ import {
   SORT_BY,
 } from "../actionTypes";
 
+const rootUrl = "https://where-is-my-book-services.onrender.com";
+
 export const searchItem =
   (searchKey, searchValue, navigate) => async (dispatch) => {
     console.log(searchKey + " ", searchValue);
     try {
       const res = await axios.get(
-        `${process.env.rootUrl}/api/products/product` +
-          "?" +
-          searchKey +
-          "=" +
-          searchValue
+        `${rootUrl}/api/products/product` + "?" + searchKey + "=" + searchValue
       );
       dispatch({
         type: SEARCH_ITEM,

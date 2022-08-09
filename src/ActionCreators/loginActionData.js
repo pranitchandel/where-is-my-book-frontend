@@ -15,12 +15,14 @@ import {
   UPDATE_WISHLIST,
 } from "../actionTypes";
 
+const rootUrl = "https://where-is-my-book-services.onrender.com";
+
 export const register = (formData, navigate) => async (dispatch) => {
   dispatch(setLoading(true));
   dispatch(clearError());
   try {
     const { name, email, contactNumber, password } = formData;
-    const res = await axios.post(`${process.env.rootUrl}/api/users/register`, {
+    const res = await axios.post(`${rootUrl}/api/users/register`, {
       name,
       email,
       contactNumber,
@@ -48,7 +50,7 @@ export const login = (formData, navigate) => (dispatch) => {
   dispatch(clearError());
   const { email, password } = formData;
   axios
-    .post(`${process.env.rootUrl}/api/users/login`, {
+    .post(`${rootUrl}/api/users/login`, {
       email,
       password,
     })
@@ -103,7 +105,7 @@ export const addWishlist =
   async (dispatch) => {
     try {
       const res = await axios.post(
-        `${process.env.rootUrl}/api/users/addWishlist/` + userId + "/" + prodId
+        `${rootUrl}/api/users/addWishlist/` + userId + "/" + prodId
       );
       dispatch({
         type: SET_WISHLIST,
@@ -116,10 +118,7 @@ export const addWishlist =
 export const deleteFromWishlist = (userId, prodId) => async (dispatch) => {
   try {
     const res = await axios.post(
-      `${process.env.rootUrl}/api/users/deleteFromWishlist/` +
-        userId +
-        "/" +
-        prodId
+      `${rootUrl}/api/users/deleteFromWishlist/` + userId + "/" + prodId
     );
     console.log(res.data);
     dispatch({
@@ -133,9 +132,8 @@ export const deleteFromWishlist = (userId, prodId) => async (dispatch) => {
 
 export const getWishlist = (userId) => async (dispatch) => {
   try {
-    const res = await axios.get(
-      `${process.env.rootUrl}/api/users/getWishlist/` + userId
-    );
+    const res = await axios.get(`${rootUrl}/api/users/getWishlist/` + userId);
+    console.log(res.data);
     dispatch({
       type: SET_WISHLIST,
       payload: res.data,
