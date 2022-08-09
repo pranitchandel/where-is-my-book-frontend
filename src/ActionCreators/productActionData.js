@@ -14,7 +14,11 @@ export const searchItem =
     console.log(searchKey + " ", searchValue);
     try {
       const res = await axios.get(
-        "/api/products/product" + "?" + searchKey + "=" + searchValue
+        `${process.env.rootUrl}/api/products/product` +
+          "?" +
+          searchKey +
+          "=" +
+          searchValue
       );
       dispatch({
         type: SEARCH_ITEM,
