@@ -18,6 +18,8 @@ const Account = ({ addWishlist, user, wishlist, deleteFromWishlist }) => {
   const [currentProd, setCurrentProd] = useState("");
   const [profileDiv, setProfileDiv] = useState(<div></div>);
 
+  const rootUrl = "https://where-is-my-book-services.onrender.com";
+
   const handleRemove = async (prodId) => {
     console.log(wishlist);
     await deleteFromWishlist(user.id, prodId);
@@ -28,7 +30,7 @@ const Account = ({ addWishlist, user, wishlist, deleteFromWishlist }) => {
     async function getUserProfile() {
       let tempDiv = <div></div>;
       axios
-        .get("/api/users/user/" + user.id)
+        .get(`${rootUrl}/api/users/user/` + user.id)
         .then((res) => {
           tempDiv = (
             <div className="profileContainer">
@@ -55,7 +57,7 @@ const Account = ({ addWishlist, user, wishlist, deleteFromWishlist }) => {
       let tempArray = <div></div>;
       wishlist.map((wish) => {
         axios
-          .get("/api/products/product/" + wish.productId)
+          .get(`${rootUrl}/api/products/product/` + wish.productId)
           .then((res) => {
             const tempWish = (
               <div className="wishContainer">
